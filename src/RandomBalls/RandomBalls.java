@@ -6,6 +6,8 @@ import de.ur.mi.oop.colors.Colors;
 import de.ur.mi.oop.graphics.Circle;
 import de.ur.mi.oop.launcher.GraphicsAppLauncher;
 
+import java.util.Random;
+
 /**
  * In dieser GraphicsApp-Anwendung werden 100 zufällig platzierte Kreise animiert. Ausgehend von ihrer Startposition
  * bewegen sich je 25% der Kreise nach oben rechts, unten rechts, unten links und oben links. Die Kreise werden in einem
@@ -98,19 +100,11 @@ public class RandomBalls extends GraphicsApp {
     }
 
     private Circle createRandomCircle() {
-        int xPosition = getRandomInt(SCREEN_WIDTH);
-        int yPosition = getRandomInt(SCREEN_HEIGHT);
+        Random random = new Random();
+        int xPosition = random.nextInt(SCREEN_WIDTH);
+        int yPosition = random.nextInt(SCREEN_HEIGHT);
         Color ballColor = Colors.getRandomColor();
         return new Circle(xPosition, yPosition, BALL_RADIUS, ballColor);
-    }
-
-    /**
-     * Die Methode berechnet mit Hilfe der Math.random()-Methode einen zufälligen Ganzzahl-Wert zwischen 0 und dem
-     * als Parameter übergebenen oberen Limit (beide Werte sind inklusiv!). Der berechnete Wert wird als Ergebnis
-     * zurückgegeben.
-     */
-    private int getRandomInt(int upperLimit) {
-        return (int) (Math.random() * (upperLimit + 1));
     }
 
     public static void main(String[] args) {
